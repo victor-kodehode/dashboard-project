@@ -116,6 +116,7 @@ fetch('../data.json')
     .then(rawData => {
         data.push(rawData);
     });
+console.log(data);
 
 /* constants */
 const daily = document.getElementById("daily");
