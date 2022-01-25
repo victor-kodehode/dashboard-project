@@ -111,7 +111,7 @@ const data = [
     +----------------------+
 */
 const data = [];
-fetch('https://victor-kodehode.github.io/dashboard-project/data.json')
+fetch('../data.json')
     .then(response => response.json())
     .then(rawData => {
         data.push(rawData);
