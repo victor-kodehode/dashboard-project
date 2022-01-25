@@ -2,7 +2,6 @@
     +----------------------+
     | temporary workaround |
     +----------------------+
-*/
 const data = [
     {
         title: "Work",
@@ -107,11 +106,16 @@ const data = [
         }
     }
 ];
-/*
     +----------------------+
     | temporary workaround |
     +----------------------+
 */
+const data = [];
+fetch('https://victor-kodehode.github.io/dashboard-project/data.json')
+    .then(response => response.json())
+    .then(rawData => {
+        data.push(rawData);
+    });
 
 /* constants */
 const daily = document.getElementById("daily");
