@@ -1,0 +1,168 @@
+/* ↓ root ↓ */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 18px;
+}
+body {
+    background-color: hsl(226, 43%, 10%);
+    color: white;
+    font-family: 'Rubik', sans-serif;
+}
+/* ↑ root ↑ */
+
+.container {
+    display: grid;
+    grid-template-columns: auto;
+    width: 325px;
+    margin: 2rem auto;
+    gap: 2rem;
+}
+
+/* ↓ profile ↓ */
+.profile-outer {
+    background-color: hsl(235, 46%, 20%);
+    border-radius: 1rem;
+}
+.profile-inner {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: hsl(246, 80%, 60%);
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+}
+.profile-image {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    border: 2px solid white;
+    border-radius: 100%;
+    width: 4rem;
+}
+.profile-text {
+    color: hsl(236, 100%, 87%);
+    font-size: 1rem;
+    font-weight: 400;
+}
+.profile-name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.profile-time {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 1rem;
+}
+#daily,#weekly,#monthly {
+    justify-self: center;
+    color: hsl(235, 45%, 61%);
+    cursor: pointer;
+}
+#daily {
+    color: white;
+}
+/* ↑ profile ↑ */
+
+/* ↓ activities ↓ */
+.work,.play,.study,.exercise,.social,.self-care {
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    padding-top: 2.5rem;
+    border-radius: 1rem;
+}
+.work {
+    background-color: hsl(15, 100%, 70%);
+    background-image: url('../images/icon-work.svg');
+}
+.play {
+    background-color: hsl(195, 74%, 62%);
+    background-image: url('../images/icon-play.svg');
+}
+.study {
+    background-color: hsl(348, 100%, 68%);
+    background-image: url('../images/icon-study.svg');
+}
+.exercise {
+    background-color: hsl(145, 58%, 55%);
+    background-image: url('../images/icon-exercise.svg');
+}
+.social {
+    background-color: hsl(264, 64%, 52%);
+    background-image: url('../images/icon-social.svg');
+}
+.self-care {
+    background-color: hsl(43, 84%, 65%);
+    background-image: url('../images/icon-self-care.svg');
+}
+.info {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: hsl(235, 46%, 20%);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.activity-name {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.dots {
+    width: 2rem;
+    justify-self: end;
+    align-self: center;
+}
+.curr {
+    color: white;
+    font-size: 2rem;
+    font-weight: 300;
+}
+.prev {
+    color: hsl(236, 100%, 87%);
+    justify-self: end;
+    align-self: center;
+}
+/* ↑ activities ↑ */
+
+@media (min-width: 1110px) {
+    .container {
+        margin-top: 10%;
+        width: 1100px;
+        grid-template-columns: auto auto auto auto;
+    }
+    .profile-outer {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .profile-inner {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-template-columns: auto;
+    }
+    .profile-name {
+        font-size: 2.5rem;
+    }
+    .profile-time {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-template-columns: auto;
+    }
+    #daily,#weekly,#monthly {
+        justify-self: start;
+    }
+    .curr {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 1.5rem;
+        font-size: 3rem;
+        justify-self: start;
+    }
+    .prev {
+        margin-bottom: 1rem;
+        justify-self: start;
+    }
+}
