@@ -110,12 +110,9 @@ const data = [
     | temporary workaround |
     +----------------------+
 */
-const data = [];
-fetch('data.json')
+const data = fetch('data.json')
     .then(response => response.json())
-    .then(rawData => {
-        data.push(rawData);
-    });
+    .then(rawData => rawData);
 console.log(data);
 
 /* constants */
