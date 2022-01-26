@@ -113,6 +113,7 @@ const data = [
 const data = await fetch('../data.json')
     .then(response => response.json())
     .then(rawData => rawData);
+console.log("bob kåre");
 console.log(data);
 
 /* constants */
