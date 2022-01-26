@@ -113,8 +113,6 @@ const data = [
 const data = await fetch('./data.json')
     .then(response => response.json())
     .then(rawData => rawData);
-console.log("bob kåre");
-console.log(data);
 
 /* constants */
 const daily = document.getElementById("daily");
@@ -130,27 +128,27 @@ for (let i = 0; i < secondaries; i++) {
     prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`;
 }
 daily.addEventListener("click", function () {
-    daily.style.color = "white";
-    weekly.style.color = "hsl(235,45%,61%)";
-    monthly.style.color = "hsl(235,45%,61%)";
+    daily.classList.add("active-option");
+    weekly.classList.remove("active-option");
+    monthly.classList.remove("active-option");
     for (let i = 0; i < secondaries; i++) {
         curr[i].textContent = `${data[i].timeframes.daily.current}hrs`;
         prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`;
     }
 });
 weekly.addEventListener("click", function () {
-    daily.style.color = "hsl(235,45%,61%)";
-    weekly.style.color = "white";
-    monthly.style.color = "hsl(235,45%,61%)";
+    daily.classList.remove("active-option");
+    weekly.classList.add("active-option");
+    monthly.classList.remove("active-option");
     for (let i = 0; i < secondaries; i++) {
         curr[i].textContent = `${data[i].timeframes.weekly.current}hrs`;
         prev[i].textContent = `Last Week - ${data[i].timeframes.weekly.previous}hrs`;
     }
 });
 monthly.addEventListener("click", function () {
-    daily.style.color = "hsl(235,45%,61%)";
-    weekly.style.color = "hsl(235,45%,61%)";
-    monthly.style.color = "white";
+    daily.classList.remove("active-option");
+    weekly.classList.remove("active-option");
+    monthly.classList.add("active-option");
     for (let i = 0; i < secondaries; i++) {
         curr[i].textContent = `${data[i].timeframes.monthly.current}hrs`;
         prev[i].textContent = `Last Month - ${data[i].timeframes.monthly.previous}hrs`;

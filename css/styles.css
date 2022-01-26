@@ -54,13 +54,17 @@ body {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 1rem;
+    color: hsl(235, 45%, 61%);
 }
 #daily,#weekly,#monthly {
     justify-self: center;
-    color: hsl(235, 45%, 61%);
     cursor: pointer;
 }
-#daily {
+.active-option {
+    color: white;
+}
+.profile-time div:hover,
+.profile-time div:focus {
     color: white;
 }
 /* ↑ profile ↑ */
@@ -104,6 +108,11 @@ body {
     border-radius: 1rem;
     padding: 1rem;
 }
+.info:hover,
+.info:focus {
+    background-color: hsl(236, 45%, 30%);
+    cursor: pointer;
+}
 .activity-name {
     color: white;
     font-size: 1rem;
@@ -130,7 +139,8 @@ body {
     .container {
         margin-top: 10%;
         width: 1100px;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: repeat(4, 255px);
+        grid-template-rows: repeat(2, 1fr);
     }
     .profile-outer {
         grid-row-start: 1;
