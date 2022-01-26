@@ -110,7 +110,7 @@ const data = [
     | temporary workaround |
     +----------------------+
 */
-const data = fetch('data.json')
+const data = await fetch('../data.json')
     .then(response => response.json())
     .then(rawData => rawData);
 console.log(data);
