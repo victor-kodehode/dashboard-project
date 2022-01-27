@@ -18,16 +18,16 @@ for (let i = 0; i < secondaries; i++) { // display daily data by default
 }
 
 /* code that is called */
-function darkenOptions () {
-    daily.classList.remove("active-option");
-    weekly.classList.remove("active-option");
-    monthly.classList.remove("active-option");
+function darkenOptions () { // turn the options dark
+    daily.classList.remove("active-option"); // daily option turns dark
+    weekly.classList.remove("active-option"); // weekly option turns dark
+    monthly.classList.remove("active-option"); // monthly option turns dark
 }
 
-/* code that runs when an event is triggered i.e. clicking on a button */
-daily.addEventListener("click", function () { // when you click on the daily button
+/* code that runs when an event is triggered i.e. clicking on an option */
+daily.addEventListener("click", function () { // when you click on the daily option
     darkenOptions();
-    daily.classList.add("active-option"); // daily button turns white
+    daily.classList.add("active-option"); // daily option turns white
     for (let i = 0; i < secondaries; i++) { // display daily data
         curr[i].textContent = `${data[i].timeframes.daily.current}hrs`; // update current times
         prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`; // update previous times
