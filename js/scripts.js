@@ -1,47 +1,30 @@
-/* the data that will be displayed */
 const data = await fetch('./data.json') // fetch daily/weekly/monthly data from the json file
     .then(response => response.json()) // convert to js
     .then(rawData => rawData); // return the data
-
-/* constants */
-const daily = document.getElementById("daily"); // the daily button
-const weekly = document.getElementById("weekly"); // the weekly button
-const monthly = document.getElementById("monthly"); // the monthly button
+const optionsData = [[],[],[]]; // data array that is more easily accessible
+for (let i = 0; i < data.length; i++) { // populate the array
+    optionsData[0].push(data[i].timeframes.daily); // add the daily data
+    optionsData[1].push(data[i].timeframes.weekly); // add the weekly data
+    optionsData[2].push(data[i].timeframes.monthly); // add the monthly data
+}
+const prevStrings = ["Yesterday","Last Week","Last Month"]; // strings for the display
+const options = document.getElementsByClassName("option"); // the 3 options that can be clicked (daily/weekly/monthly)
 const curr = document.getElementsByClassName("curr"); // array of current times
 const prev = document.getElementsByClassName("prev"); // array of previous times
-const secondaries = data.length; // number of cards i.e. work, play, etc
-
-/* code that runs when website is opened */
-for (let i = 0; i < secondaries; i++) { // display daily data by default
-    curr[i].textContent = `${data[i].timeframes.daily.current}hrs`; // update current times
-    prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`; // update previous times
+for (let i = 0; i < data.length; i++) { // display daily data by default
+    curr[i].textContent = `${optionsData[0][i].current}hrs`; // update current times
+    prev[i].textContent = `${prevStrings[0]} - ${optionsData[0][i].previous}hrs`; // update previous times
 }
-
-/* code that runs when an event is triggered i.e. clicking on a button */
-daily.addEventListener("click", function () { // when you click on the daily button
-    daily.classList.add("active-option"); // daily button turns white
-    weekly.classList.remove("active-option"); // weekly button turns dark
-    monthly.classList.remove("active-option"); // monthly button turns dark
-    for (let i = 0; i < secondaries; i++) { // display daily data
-        curr[i].textContent = `${data[i].timeframes.daily.current}hrs`; // update current times
-        prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`; // update previous times
+for (let i = 0; i < options.length; i++) { // initialize the event listeners on the options
+    options[i].addEventListener("click",()=>updateDisplay(i)); // clicking on option i runs updateDisplay(i)
+}
+function updateDisplay (optionIndex) { // function that updates the display, optionIndex indicates which option that was clicked
+    for (let i = 0; i < options.length; i++) { // remove white from all 3 options
+        options[i].classList.remove("active-option"); // removing the class that gives the white color
     }
-});
-weekly.addEventListener("click", function () { // when you click on the weekly button
-    daily.classList.remove("active-option"); // daily button turns dark
-    weekly.classList.add("active-option"); // weekly button turns white
-    monthly.classList.remove("active-option"); // monthly button turns dark
-    for (let i = 0; i < secondaries; i++) { // display weekly data
-        curr[i].textContent = `${data[i].timeframes.weekly.current}hrs`; // update current times
-        prev[i].textContent = `Last Week - ${data[i].timeframes.weekly.previous}hrs`; // update previous times
+    options[optionIndex].classList.add("active-option"); // adding back the class to the option that was clicked
+    for (let i = 0; i < data.length; i++) { // updating the displays
+        curr[i].textContent = `${optionsData[optionIndex][i].current}hrs`; // update current times
+        prev[i].textContent = `${prevStrings[optionIndex]} - ${optionsData[optionIndex][i].previous}hrs`; // update previous times
     }
-});
-monthly.addEventListener("click", function () { // when you click on the monthly button
-    daily.classList.remove("active-option"); // daily button turns dark
-    weekly.classList.remove("active-option"); // weekly button turns dark
-    monthly.classList.add("active-option"); // monthly button turns white
-    for (let i = 0; i < secondaries; i++) { // display monthly data
-        curr[i].textContent = `${data[i].timeframes.monthly.current}hrs`; // update current times
-        prev[i].textContent = `Last Month - ${data[i].timeframes.monthly.previous}hrs`; // update previous times
-    }
-});
+}
