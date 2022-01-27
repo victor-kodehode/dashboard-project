@@ -17,28 +17,32 @@ for (let i = 0; i < secondaries; i++) { // display daily data by default
     prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`; // update previous times
 }
 
+/* code that is called */
+function darkenOptions () {
+    daily.classList.remove("active-option");
+    weekly.classList.remove("active-option");
+    monthly.classList.remove("active-option");
+}
+
 /* code that runs when an event is triggered i.e. clicking on a button */
 daily.addEventListener("click", function () { // when you click on the daily button
+    darkenOptions();
     daily.classList.add("active-option"); // daily button turns white
-    weekly.classList.remove("active-option"); // weekly button turns dark
-    monthly.classList.remove("active-option"); // monthly button turns dark
     for (let i = 0; i < secondaries; i++) { // display daily data
         curr[i].textContent = `${data[i].timeframes.daily.current}hrs`; // update current times
         prev[i].textContent = `Yesterday - ${data[i].timeframes.daily.previous}hrs`; // update previous times
     }
 });
 weekly.addEventListener("click", function () { // when you click on the weekly button
-    daily.classList.remove("active-option"); // daily button turns dark
+    darkenOptions();
     weekly.classList.add("active-option"); // weekly button turns white
-    monthly.classList.remove("active-option"); // monthly button turns dark
     for (let i = 0; i < secondaries; i++) { // display weekly data
         curr[i].textContent = `${data[i].timeframes.weekly.current}hrs`; // update current times
         prev[i].textContent = `Last Week - ${data[i].timeframes.weekly.previous}hrs`; // update previous times
     }
 });
 monthly.addEventListener("click", function () { // when you click on the monthly button
-    daily.classList.remove("active-option"); // daily button turns dark
-    weekly.classList.remove("active-option"); // weekly button turns dark
+    darkenOptions();
     monthly.classList.add("active-option"); // monthly button turns white
     for (let i = 0; i < secondaries; i++) { // display monthly data
         curr[i].textContent = `${data[i].timeframes.monthly.current}hrs`; // update current times
