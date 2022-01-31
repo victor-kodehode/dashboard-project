@@ -11,10 +11,7 @@ const prevStrings = ["Yesterday","Last Week","Last Month"]; // strings for the d
 const options = document.getElementsByClassName("option"); // the 3 options that can be clicked (daily/weekly/monthly)
 const curr = document.getElementsByClassName("curr"); // array of current times
 const prev = document.getElementsByClassName("prev"); // array of previous times
-for (let i = 0; i < data.length; i++) { // display daily data by default
-    curr[i].textContent = `${optionsData[0][i].current}hrs`; // update current times
-    prev[i].textContent = `${prevStrings[0]} - ${optionsData[0][i].previous}hrs`; // update previous times
-}
+updateNumbers(0);
 for (let i = 0; i < options.length; i++) { // initialize the event listeners on the options
     options[i].addEventListener("click",()=>updateDisplay(i)); // clicking on option i runs updateDisplay(i)
 }
@@ -23,7 +20,10 @@ function updateDisplay (optionIndex) { // function that updates the display, opt
         options[i].classList.remove("active-option"); // removing the class that gives the white color
     }
     options[optionIndex].classList.add("active-option"); // adding back the class to the option that was clicked
-    for (let i = 0; i < data.length; i++) { // updating the displays
+    updateNumbers(optionIndex);
+}
+function updateNumbers (optionIndex) {
+    for (let i = 0; i < data.length; i++) {
         curr[i].textContent = `${optionsData[optionIndex][i].current}hrs`; // update current times
         prev[i].textContent = `${prevStrings[optionIndex]} - ${optionsData[optionIndex][i].previous}hrs`; // update previous times
     }
