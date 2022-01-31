@@ -17,7 +17,7 @@ function updateDisplay (name,last) {
 }
 function updateNumbers (name,last) {
   for (let i = 0; i < curr.length; i++) {
-    curr[i].textContent = `${data[name].current}hrs`;
-    prev[i].textContent = `${last} - ${data[name].previous}hrs`;
+    curr[i].textContent = `${data.timeframes[name].current}hrs`;
+    prev[i].textContent = `${last} - ${data.timeframes[name].previous}hrs`;
   }
 }
