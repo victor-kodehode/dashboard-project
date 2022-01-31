@@ -1,6 +1,6 @@
 const data = await fetch('./data.json')
   .then(response => response.json())
-  .then(rawData => rawData.timeframes);
+  .then(rawData => rawData);
 const strings = [["daily","weekly","monthly"],["Yesterday","Last Week","Last Month"]];
 const curr = document.getElementsByClassName("curr");
 const prev = document.getElementsByClassName("prev");
@@ -16,7 +16,7 @@ function updateDisplay (name,last) {
   updateNumbers(name,last);
 }
 function updateNumbers (name,last) {
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < curr.length; i++) {
     curr[i].textContent = `${data[name].current}hrs`;
     prev[i].textContent = `${last} - ${data[name].previous}hrs`;
   }
